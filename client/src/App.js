@@ -1,17 +1,19 @@
 import React, { Component } from "react";
-import getWeb3 from "./utils/getWeb3";
-import YouTube from "react-youtube";
-import BurnerCore from "@burner-wallet/core"
-import { InjectedSigner, LocalSigner } from "@burner-wallet/core/signers"
-import { InfuraGateway } from "@burner-wallet/core/gateways"
-import Fortmatic from 'fortmatic';
+//import getWeb3 from "./utils/getWeb3";
+//import YouTube from "react-youtube";
+//import BurnerCore from "@burner-wallet/core"
+//import { InjectedSigner, LocalSigner } from "@burner-wallet/core/signers"
+//import { InfuraGateway } from "@burner-wallet/core/gateways"
+//import Fortmatic from 'fortmatic';
+
+import Components, {Sidebar, Content} from './Components'
 
 import "./App.css";
 
 class App extends Component {
   state = { storageValue: 0, web3: null, accounts: null, contract: null, burnerCore: null };
 
-  componentDidMount = async () => {
+  /*componentDidMount = async () => {
     try {
       // // Get network provider and web3 instance.
       const web3 = await getWeb3();
@@ -34,9 +36,9 @@ class App extends Component {
       });
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({ 
+      this.setState({
         //web3, accounts, contract: instance,
-        fortmatic: new Fortmatic('pk_live_B7C428D5A6478799') 
+        fortmatic: new Fortmatic('pk_live_B7C428D5A6478799'),
         burnerCore: core });
 
     } catch (error) {
@@ -46,13 +48,20 @@ class App extends Component {
       );
       console.error(error);
     }
-  };
+};*/
 
   endVideo = async () => {
     // Completion info is sent to the server to mint tokens for this users address.
   }
-  
   render() {
+	  return (
+		  <div className="App">
+		  	<Sidebar />
+		  	<Content />
+		  </div>
+	  );
+  }/*
+  render_actual() {
 
     let BW, injected, main
     console.log(this.state.burnerCore)
@@ -74,7 +83,7 @@ class App extends Component {
       </div>
 
     );
-  }
+}*/
 }
 
 export default App;
