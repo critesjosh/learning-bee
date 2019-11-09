@@ -75,7 +75,36 @@ class Definitions {
             id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
             torus_address: {type: Sequelize.STRING, allowNull: false}
         }, {});
-        		
+
+        this.UserVideoEvent = this.sequelize.define('user_video_events', {
+            id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+            user_id: {type: Sequelize.INTEGER, allowNull: false},
+            video_id: {type: Sequelize.INTEGER, allowNull: false},
+            event_type: {type: Sequelize.STRING, allowNull: false},
+        }, {});
+
+        this.User.belongsTo(this.UserVideoEvent, {foreignKey: 'user_id'});
+        this.Video.belongsTo(this.UserVideoEvent, {foreignKey: 'video_id'});
+
+        this.UserTestEvent = this.sequelize.define('user_test_events', {
+            id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+            user_id: {type: Sequelize.INTEGER, allowNull: false},
+            test_id: {type: Sequelize.INTEGER, allowNull: false},
+            passed: {type: Sequelize.BOOLEAN, allowNull: false},
+        }, {});
+
+        this.User.belongsTo(this.UserTestEvent, {foreignKey: 'user_id'});
+        this.Test.belongsTo(this.UserTestEvent, {foreignKey: 'test_id'});
+
+        this.UserTestEventResponse = this.sequelize.define('user_test_event_responses', {
+            id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+            user_test_event_id: {type: Sequelize.INTEGER, allowNull: false},
+            response_id: {type: Sequelize.INTEGER, allowNull: false},
+        }, {});
+
+        this.UserTestEvent.belongsTo(this.UserTestEventResponse, {foreignKey: 'user_test_event_id'});
+        this.Response.belongsTo(this.UserTestEventResponse, {foreignKey: 'response_id'});
+
     }
 }
 module.exports = Definitions;
