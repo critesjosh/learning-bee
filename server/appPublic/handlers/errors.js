@@ -8,7 +8,7 @@ class Errors {
      * Parse general errors.
      *
      * @author: Arsham Eslami (arshameslami@gmail.com)
-     * @copyright 2018 Caliber Communications
+     * @copyright 2019 Learning Bee
      *
      * @param {error} error
      * 	Express error response to parse.

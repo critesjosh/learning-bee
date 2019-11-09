@@ -14,7 +14,7 @@ class Something {
      * Dummy function that will just resolve with two copies of the data given.
      *
      * @author: Arsham Eslami (arshameslami@gmail.com)
-     * @copyright 2018 Caliber Communications
+     * @copyright 2019 Learning Bee
      *
      * @param {Object} someData
      *  Some dummy data.

@@ -6,7 +6,7 @@ module.exports = function(app, middlewares, handlers) {
      * Serves the API readme file.
      *
      * @author: Arsham Eslami (arshameslami@gmail.com)
-     * @copyright 2018 Caliber Communications
+     * @copyright 2019 Learning Bee
      * 
      * @response {resource} html readme file.
      */

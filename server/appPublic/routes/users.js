@@ -10,7 +10,7 @@ module.exports = function(app, middlewares, handlers) {
      * Login route. Should return a persistent token for client to store.
      *
      * @author: Arsham Eslami (arshameslami@gmail.com)
-     * @copyright 2018 Caliber Communications
+     * @copyright 2019 Learning Bee
      *
      * @request body:{String} email
      * 	User email address to attempt to login with.

@@ -5,7 +5,7 @@ const Sequelize = require('sequelize');
  * CloudDj user model function definitions.
  *
  * @author: Arsham Eslami (arshameslami@gmail.com)
- * @copyright 2018 Caliber Communications
+ * @copyright 2019 Learning Bee
  */
 class Users {
 

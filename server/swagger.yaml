@@ -22,8 +22,15 @@ tags:
   externalDocs:
     description: "Find out more"
     url: "http://swagger.io"
+- name: "test"
+  description: "Everything about available Videos"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
 - name: "minting"
   description: "Access to minting operations"
+- name: "references"
+  description: "Misc"
 schemes:
 - "https"
 - "http"
@@ -105,6 +112,33 @@ paths:
           description: "Video not found"
         405:
           description: "Bad video event"
+  /test/{testId}:
+    get:
+      tags:
+      - "test"
+      summary: "Get a test by id"
+      description: ""
+      operationId: "getTestById"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "testId"
+        in: "path"
+        description: "ID of test to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Test"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Test not found"
   /test/{testId}/event:
     post:
       tags:
@@ -152,11 +186,63 @@ paths:
       - "application/json"
       produces:
       - "application/json"
+      parameters:
+        - in: query
+          name: categoryId
+          type: integer
+          description: Filter by category ID.
+        - in: query
+          name: searchKey
+          type: string
+          description: Filter by course name.
       responses:
         200:
           description: "successful operation"
           schema:
             $ref: "#/definitions/ArrayOfCourses"
+  /course/{courseId}:
+    get:
+      tags:
+      - "course"
+      summary: "Get a course by id"
+      description: ""
+      operationId: "getCourseById"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "courseId"
+        in: "path"
+        description: "ID of course to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Course"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Course not found"
+  /categories:
+    get:
+      tags:
+      - "references"
+      summary: "Get all available categories"
+      description: ""
+      operationId: "getCategories"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ArrayOfCategories"
 definitions:
   Category:
     type: "object"
@@ -166,8 +252,10 @@ definitions:
         format: "int64"
       name:
         type: "string"
-    xml:
-      name: "Category"
+  ArrayOfCategories:
+    type: "array"
+    items:
+      $ref: "#/definitions/Category"
   Response:
     type: "object"
     properties:
@@ -212,7 +300,7 @@ definitions:
         example: "Do you know how to cook chicken?"
       bounty:
         type: "integer"
-        format: "int64
+        format: "int64"
       questions:
         $ref: "#/definitions/ArrayOfQuestions"
   TestEvent:
@@ -245,7 +333,10 @@ definitions:
       name:
         type: "string"
         example: "Cooking 101"
-      bounty:
+      bonus_bounty:
+        type: "integer"
+        format: "int64"
+      total_bounty:
         type: "integer"
         format: "int64"
       videos:
