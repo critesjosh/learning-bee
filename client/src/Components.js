@@ -57,7 +57,6 @@ class Wallet extends React.Component {
 }
 
 class Content extends React.Component {
-
 	render() {
 		const data = {
 			imgURL: "https://ethwaterloo.com/src/assets/images/ETHGlobal-logo.svg",
@@ -91,8 +90,14 @@ class CourseSummary extends React.Component {
 		return (
 			<div className="CourseSummary">
 				<DebugTitle title="CourseSummary" />
-				<div className="title">
-					<h1>{this.props.data.title}</h1>
+				<div className="img">
+					<img src={this.props.data.imgURL} />
+				</div>
+				<div className="description">
+					<div className="title">
+						<h1>{this.props.data.title}</h1>
+					</div>
+					<p>{this.props.data.description}</p>
 				</div>
 			</div>
 		);
