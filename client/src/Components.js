@@ -10,11 +10,11 @@ class DebugTitle extends React.Component {
 	}
 }
 
-class Sidebar extends React.Component {
+class Topbar extends React.Component {
 	render() {
 		return (
-			<div className="Sidebar">
-				<DebugTitle title="Sidebar" />
+			<div className="Topbar">
+				<DebugTitle title="Topbar" />
 				<Navigation />
 				<Wallet />
 			</div>
@@ -57,11 +57,18 @@ class Wallet extends React.Component {
 }
 
 class Content extends React.Component {
+
 	render() {
+		const data = {
+			imgURL: "https://ethwaterloo.com/src/assets/images/ETHGlobal-logo.svg",
+			title: "Intro to Programming",
+			description: "Learn straight facts in this amazing course!",
+			bounty: "25 BT"
+		};
 		return (
 			<div className="Content">
 				<DebugTitle title="Content" />
-				<CourseContent />
+				<CourseContent data={data}/>
 			</div>
 		);
 	}
@@ -72,6 +79,60 @@ class CourseContent extends React.Component {
 		return (
 			<div className="CourseContent">
 				<DebugTitle title="CourseContent" />
+				<CourseSummary data={this.props.data} />
+				<CourseSyllabus data={this.props.data} />
+			</div>
+		);
+	}
+}
+
+class CourseSummary extends React.Component {
+	render() {
+		return (
+			<div className="CourseSummary">
+				<DebugTitle title="CourseSummary" />
+				<div className="title">
+					<h1>{this.props.data.title}</h1>
+				</div>
+			</div>
+		);
+	}
+}
+
+class CourseSyllabus extends React.Component {
+	render() {
+		const data = {
+			title: "Video"
+		}
+		return (
+			<div className="CourseSyllabus">
+				<DebugTitle title="CourseSyllabus" />
+				<SyllabusItem data={data} />
+				<SyllabusItem data={data} />
+				<SyllabusItem data={data} />
+			</div>
+		);
+	}
+}
+
+class SyllabusItem extends React.Component {
+	render() {
+		return (
+			<div className="SyllabusItem">
+				<DebugTitle title="SyllabusItem" />
+				<div className="title">
+					<h1>{this.props.data.title}</h1>
+				</div>
+			</div>
+		);
+	}
+}
+
+class CourseListContent extends React.Component {
+	render() {
+		return (
+			<div className="CourseListContent">
+				<DebugTitle title="CourseListContent" />
 				<Filterbar />
 				<CourseList />
 			</div>
@@ -159,4 +220,4 @@ class CoursePreview extends React.Component {
 	}
 }
 
-export {Sidebar, Content};
+export {Topbar, Content};

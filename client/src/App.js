@@ -6,7 +6,7 @@ import React, { Component } from "react";
 //import { InfuraGateway } from "@burner-wallet/core/gateways"
 //import Fortmatic from 'fortmatic';
 
-import Components, {Sidebar, Content} from './Components'
+import Components, {Topbar, Content} from './Components'
 
 import "./App.css";
 
@@ -56,7 +56,7 @@ class App extends Component {
   render() {
 	  return (
 		  <div className="App">
-		  	<Sidebar />
+		  	<Topbar />
 		  	<Content />
 		  </div>
 	  );
