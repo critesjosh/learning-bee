@@ -6,6 +6,7 @@
     "@burner-wallet/assets": "0.0.24",
     "@burner-wallet/core": "0.0.26",
     "@burner-wallet/ui": "0.0.40",
+    "fortmatic": "^1.0.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1",

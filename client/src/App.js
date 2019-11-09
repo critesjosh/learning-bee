@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import getWeb3 from "./utils/getWeb3";
 import YouTube from "react-youtube";
 import BurnerCore from "@burner-wallet/core"
 import { InjectedSigner, LocalSigner } from "@burner-wallet/core/signers"
-import { InfuraGateway, XDaiGateway } from "@burner-wallet/core/gateways"
+import { InfuraGateway } from "@burner-wallet/core/gateways"
+import Fortmatic from 'fortmatic';
 
 import "./App.css";
 
@@ -18,7 +18,7 @@ class App extends Component {
 
       // // Use web3 to get the user's accounts.
       const accounts = await web3.eth.getAccounts();
-
+      const fm = new Fortmatic('YOUR_API_KEY');
       // // Get the contract instance.
       // const networkId = await web3.eth.net.getId();
       // const deployedNetwork = SimpleStorageContract.networks[networkId];
@@ -35,7 +35,8 @@ class App extends Component {
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
       this.setState({ 
-        //web3, accounts, contract: instance, 
+        //web3, accounts, contract: instance,
+        fortmatic: new Fortmatic('pk_live_B7C428D5A6478799') 
         burnerCore: core });
 
     } catch (error) {
