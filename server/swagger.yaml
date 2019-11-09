@@ -63,6 +63,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - in: query
+        name: categoryId
+        type: integer
+        description: Filter by category ID.
+      - in: query
+        name: searchKey
+        type: string
+        description: Filter by video name.
       - name: "videoId"
         in: "path"
         description: "ID of video to return"
@@ -333,10 +341,15 @@ definitions:
       name:
         type: "string"
         example: "Cooking 101"
-      bonus_bounty:
+      description:
+        type: "string"
+        example: "You will learn what's good about cooking in this course."
+      thumbnailUrl:
+        type: "string"
+      bonusBounty:
         type: "integer"
         format: "int64"
-      total_bounty:
+      totalBounty:
         type: "integer"
         format: "int64"
       videos:
@@ -353,6 +366,9 @@ definitions:
         format: "int64"
       category:
         $ref: "#/definitions/Category"
+      description:
+        type: "string"
+        example: "You will learn the finer details of how to cook Chicken in this video."
       name:
         type: "string"
         example: "Learn to cook Chicken!"
@@ -383,7 +399,7 @@ definitions:
       id:
         type: "integer"
         format: "int64"
-      torusId:
+      torusAddress:
         type: "string"
   UserVideoEvent:
     type: "object"

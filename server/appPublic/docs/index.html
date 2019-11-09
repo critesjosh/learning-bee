@@ -226,8 +226,10 @@
       <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
     },
     <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Cooking 101&quot;</span>,
-    <span class="hljs-attr">&quot;bonus_bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-    <span class="hljs-attr">&quot;total_bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
+    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;You will learn what&apos;s good about cooking in this course.&quot;</span>,
+    <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;bonusBounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
+    <span class="hljs-attr">&quot;totalBounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
     <span class="hljs-attr">&quot;videos&quot;</span>: [
       {
         <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
@@ -235,6 +237,7 @@
           <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
           <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
         },
+        <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;You will learn the finer details of how to cook Chicken in this video.&quot;</span>,
         <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
         <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
         <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
@@ -368,8 +371,10 @@
     <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
   },
   <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Cooking 101&quot;</span>,
-  <span class="hljs-attr">&quot;bonus_bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-  <span class="hljs-attr">&quot;total_bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;You will learn what&apos;s good about cooking in this course.&quot;</span>,
+  <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;bonusBounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
+  <span class="hljs-attr">&quot;totalBounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
   <span class="hljs-attr">&quot;videos&quot;</span>: [
     {
       <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
@@ -377,6 +382,7 @@
         <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
         <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
       },
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;You will learn the finer details of how to cook Chicken in this video.&quot;</span>,
       <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
       <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
       <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
@@ -480,6 +486,7 @@
       <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
       <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
     },
+    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;You will learn the finer details of how to cook Chicken in this video.&quot;</span>,
     <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
     <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
     <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
@@ -538,6 +545,34 @@
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">categoryId:
+                        <span class="prop-type">
+                          <span class="json-property-type">integer</span>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                      <div class="prop-subtitle"> in query </div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Filter by category ID.</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">searchKey:
+                        <span class="prop-type">
+                          <span class="json-property-type">string</span>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                      <div class="prop-subtitle"> in query </div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Filter by video name.</p>
+                    </div>
+                  </div>
                   <div class="prop-row prop-group">
                     <div class="prop-name">
                       <div class="prop-title">videoId:
@@ -610,6 +645,7 @@
     <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
     <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
   },
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;You will learn the finer details of how to cook Chicken in this video.&quot;</span>,
   <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
   <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
@@ -785,6 +821,7 @@
     <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
     <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
   },
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;You will learn the finer details of how to cook Chicken in this video.&quot;</span>,
   <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
   <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
@@ -1087,6 +1124,7 @@
     <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
     <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
   },
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;You will learn the finer details of how to cook Chicken in this video.&quot;</span>,
   <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
   <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
@@ -1865,8 +1903,10 @@
       <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
     },
     <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Cooking 101&quot;</span>,
-    <span class="hljs-attr">&quot;bonus_bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-    <span class="hljs-attr">&quot;total_bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
+    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;You will learn what&apos;s good about cooking in this course.&quot;</span>,
+    <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;bonusBounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
+    <span class="hljs-attr">&quot;totalBounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
     <span class="hljs-attr">&quot;videos&quot;</span>: [
       {
         <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
@@ -1874,6 +1914,7 @@
           <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
           <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
         },
+        <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;You will learn the finer details of how to cook Chicken in this video.&quot;</span>,
         <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
         <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
         <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
@@ -1944,14 +1985,24 @@
                       <span class="json-property-type">string</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
-                    <dt data-property-name="bonus_bounty">
-                      <span class="json-property-name">bonus_bounty:</span>
+                    <dt data-property-name="description">
+                      <span class="json-property-name">description:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="thumbnailUrl">
+                      <span class="json-property-name">thumbnailUrl:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="bonusBounty">
+                      <span class="json-property-name">bonusBounty:</span>
                       <span class="json-property-type">integer</span>
                       <span class="json-property-format">(int64)</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
-                    <dt data-property-name="total_bounty">
-                      <span class="json-property-name">total_bounty:</span>
+                    <dt data-property-name="totalBounty">
+                      <span class="json-property-name">totalBounty:</span>
                       <span class="json-property-type">integer</span>
                       <span class="json-property-format">(int64)</span>
                       <span class="json-property-range" title="Value limits"></span>
@@ -1981,8 +2032,10 @@
     <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
   },
   <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Cooking 101&quot;</span>,
-  <span class="hljs-attr">&quot;bonus_bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-  <span class="hljs-attr">&quot;total_bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;You will learn what&apos;s good about cooking in this course.&quot;</span>,
+  <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;bonusBounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
+  <span class="hljs-attr">&quot;totalBounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
   <span class="hljs-attr">&quot;videos&quot;</span>: [
     {
       <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
@@ -1990,6 +2043,7 @@
         <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
         <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
       },
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;You will learn the finer details of how to cook Chicken in this video.&quot;</span>,
       <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
       <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
       <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
@@ -2063,6 +2117,7 @@
       <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
       <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
     },
+    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;You will learn the finer details of how to cook Chicken in this video.&quot;</span>,
     <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
     <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
     <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
@@ -2126,6 +2181,11 @@
                       </span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
+                    <dt data-property-name="description">
+                      <span class="json-property-name">description:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
                     <dt data-property-name="name">
                       <span class="json-property-name">name:</span>
                       <span class="json-property-type">string</span>
@@ -2177,6 +2237,7 @@
     <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
     <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
   },
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;You will learn the finer details of how to cook Chicken in this video.&quot;</span>,
   <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
   <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
@@ -2278,8 +2339,8 @@
                       <span class="json-property-format">(int64)</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
-                    <dt data-property-name="torusId">
-                      <span class="json-property-name">torusId:</span>
+                    <dt data-property-name="torusAddress">
+                      <span class="json-property-name">torusAddress:</span>
                       <span class="json-property-type">string</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
@@ -2294,7 +2355,7 @@
                   <head></head>
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-  <span class="hljs-attr">&quot;torusId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+  <span class="hljs-attr">&quot;torusAddress&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
 }
 </code></pre> </body>
                   </html>
