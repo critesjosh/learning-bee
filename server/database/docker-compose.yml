@@ -16,6 +16,8 @@ services:
       - ${PG_PORT}:5432
     networks:
       - database
+    volumes:
+      - ./my_init.sql:/docker-entrypoint-initdb.d/my_init.sql
 
   adminer:
     image: adminer

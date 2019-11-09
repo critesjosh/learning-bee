@@ -6,8 +6,8 @@ module.exports = {
     database: {
         host: "127.0.0.1",
         port: 8200,
-        name: "database",
-        username: "admin",
-        password: "password"
+        name: "learningbee",
+        username: "root",
+        password: "example"
     }
 }

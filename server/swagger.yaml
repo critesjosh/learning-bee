@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  description: "This is a sample learning bee server. For this sample, you can use the api key `special-key` to test the authorization filters."
+  description: "This is a sample learning bee server."
   version: "0.0.1"
   title: "Learning Bee API"
   termsOfService: "http://swagger.io/terms/"

@@ -24,6 +24,8 @@ appPublic.use(bodyParser.urlencoded({ extended: true }));
 // Use bodyParser to allow Express to parse application/json
 appPublic.use(bodyParser.json());
 
+appPublic.use(express.static(__dirname + '/appPublic/docs'));
+
 // Initialize our internal handler class instance
 const publicHandlers = new (require('./appPublic/handlers'))(helpers, models);
 

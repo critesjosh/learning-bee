@@ -4,7 +4,8 @@
   "description": "Serves required data for learning bee client apps.",
   "main": "api.js",
   "scripts": {
-    "dev": "nodemon --inspect api.js"
+    "dev": "nodemon --inspect api.js",
+    "docs": "spectacle --target-dir ./appPublic/docs swagger.yaml"
   },
   "author": "Arsham Eslami",
   "license": "ISC",

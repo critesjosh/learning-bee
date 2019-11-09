@@ -13,7 +13,8 @@ module.exports = function(app, middlewares, handlers) {
    
     app.get('/', (req, res) => {
 
-        res.sendFile(__dirname + '/readme.html');
+        // res.sendFile(__dirname + '/readme.html');
+        res.sendFile(__dirname + '/docs/index.html');
 
     });
 	
