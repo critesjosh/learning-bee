@@ -1,4 +1,5 @@
 # Learning Bee
+[Brainstorm Doc] (https://docs.google.com/document/d/1Bupl7mA0Z9Q8hn1DInZwYmMfJzEFIx4riO6RBAl2itc/edit)
 eth waterloo hackathon project
 
 Learning Bee is site that hosts educational content and pays users to learn.
