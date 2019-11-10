@@ -24,7 +24,7 @@ class App extends Component {
 
 
 			contentComponent: "VideoCoent",
-			contentData: [],
+			courses: [],
 
 			f: {loadContentComponent: lcc}
 	  }
@@ -33,12 +33,20 @@ class App extends Component {
   genLoadContentComponent(tis) {
 	  return (contentComponent, contentData) => {
 		  tis.setState({
-			  contentComponent: contentComponent,
-			  contentData: contentData
+			  contentComponent: contentComponent
 		  });
 	  }
   }
-
+	componentDidMount() {
+		fetch("http://localhost:8000/courses").then(
+			(response) => {
+				console.log(response.json())
+				this.setState({
+					courses: response.json().data
+				})
+			}
+		)
+	}
 
 
   /*componentDidMount = async () => {

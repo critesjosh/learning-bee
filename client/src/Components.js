@@ -210,25 +210,14 @@ class Search extends React.Component {
 
 class CourseList extends React.Component {
 	render() {
-		const data = {
-			imgURL: "https://ethwaterloo.com/src/assets/images/ETHGlobal-logo.svg",
-			title: "Intro to Programming",
-			description: "Learn straight facts in this amazing course!",
-			bounty: 25
-		};
+		//const courses = this.props.courses.map(c => <CoursePreview course={c} f={this.props.f} />);
+		const courses = [];
 		return (
 			<div className="CourseList">
 				<DebugTitle title="CourseList" />
 
-				<CoursePreview data={data} f={this.props.f} />
-				<CoursePreview data={data} f={this.props.f} />
-				<CoursePreview data={data} f={this.props.f} />
-				<CoursePreview data={data} f={this.props.f} />
-				<CoursePreview data={data} f={this.props.f} />
-				<CoursePreview data={data} f={this.props.f} />
-				<CoursePreview data={data} f={this.props.f} />
-				<CoursePreview data={data} f={this.props.f} />
-				<CoursePreview data={data} f={this.props.f} />
+
+				{courses}
 			</div>
 		);
 	}
