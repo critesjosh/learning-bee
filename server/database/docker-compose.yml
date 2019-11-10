@@ -1,0 +1,28 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+networks:
+  database:
+    driver: ${NETWORKS_DRIVER}
+
+services:
+  db:
+    image: postgres
+    restart: ${RESTART_POLICY}
+    environment:
+      POSTGRES_USER: ${PG_USERNAME}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+    ports:
+      - ${PG_PORT}:5432
+    networks:
+      - database
+    volumes:
+      - ./my_init.sql:/docker-entrypoint-initdb.d/my_init.sql
+
+  adminer:
+    image: adminer
+    restart: ${RESTART_POLICY}
+    ports:
+      - ${ADMINER_PORT}:8080
+    networks:
+      - database
