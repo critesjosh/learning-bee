@@ -149,16 +149,16 @@ class Content extends React.Component {
 		var content;
 		switch (this.props.component) {
 			case "TestContent":
-				content = <TestContent test={test} f={this.props.f}/>;
+				content = <TestContent test={this.props.state.test} f={this.props.f}/>;
 				break;
 			case "VideoContent":
-				content = <VideoContent video={video} f={this.props.f}/>;
+				content = <VideoContent video={this.props.state.video} f={this.props.f}/>;
 				break;
 			case "CourseContent":
-				content = <CourseContent course={course} f={this.props.f}/>;
+				content = <CourseContent course={this.props.state.course} f={this.props.f}/>;
 				break;
 			default:
-				content = <CourseListContent f={this.props.f}/>;
+				content = <CourseListContent f={this.props.f} courses={this.props.state.courses}/>;
 				break;
 		}
 		return (
@@ -178,7 +178,7 @@ class CourseListContent extends React.Component {
 			<div className="CourseListContent">
 				<DebugTitle title="CourseListContent" />
 				<Filterbar f={this.props.f} />
-				<CourseList f={this.props.f} />
+				<CourseList f={this.props.f} courses={this.props.courses}/>
 			</div>
 		);
 	}
@@ -210,13 +210,10 @@ class Search extends React.Component {
 
 class CourseList extends React.Component {
 	render() {
-		//const courses = this.props.courses.map(c => <CoursePreview course={c} f={this.props.f} />);
-		const courses = [];
+		const courses = this.props.courses.map(c => <CoursePreview course={c} f={this.props.f} />);
 		return (
 			<div className="CourseList">
 				<DebugTitle title="CourseList" />
-
-
 				{courses}
 			</div>
 		);
@@ -227,19 +224,23 @@ class CourseList extends React.Component {
 
 class CoursePreview extends React.Component {
 	render() {
+		const loadCourse = () => {
+			this.props.f.loadContentComponent("CourseContent", []);
+			this.props.f.setState({course: this.props.course});
+		}
 		return (
 			<div className="CoursePreview">
 			<DebugTitle title="CoursePreview" />
 				<div class="img">
-					<img src={this.props.data.imgURL} />
+					{/*<img src={this.props.course["thumbnailIrl"]} />*/}
 				</div>
 				<div class="desc">
 					<div class="title">
-						<h1 onClick={() => this.props.f.loadContentComponent("CourseContent", [])}>{this.props.data.title}</h1>
+						<h1 onClick={loadCourse}>{this.props.course.name}</h1>
 					</div>
-					<p>{this.props.data.description}</p>
+					<p>{this.props.course.description}</p>
 				</div>
-				<BountyDisplay value={this.props.data.bounty} symbol="BT" />
+				<BountyDisplay value={this.props.course.totalBounty} symbol="BT" />
 			</div>
 		);
 	}
@@ -285,14 +286,21 @@ class CourseSyllabus extends React.Component {
 class VideoPreview extends React.Component {
 	render() {
 		const tests = this.props.video.tests.map(t => (<TestPreview test={t} f={this.props.f} />));
+
+		const loadVideo = () => {
+			this.props.f.loadContentComponent("VideoContent", []);
+			this.props.f.setState({video: this.props.video});
+		}
+
 		return (
 			<div className="VideoPreview">
 				<DebugTitle title="VideoPreview" />
 				<div className="info">
 					<div>
-						<img src={this.props.video.thumbnailUrl} />
+						{/*<img src={this.props.video.thumbnailUrl} />*/}
+						<img />
 						<div className="description">
-							<h1 onClick={() => this.props.f.loadContentComponent("VideoContent", [])}>{this.props.video.name}</h1>
+							<h1 onClick={loadVideo}>{this.props.video.name}</h1>
 							<p>{this.props.video.description}</p>
 						</div>
 					</div>
@@ -335,9 +343,13 @@ class Video extends React.Component {
 
 class TestPreview extends React.Component {
 	render() {
+		const loadTest = () => {
+			this.props.f.loadContentComponent("TestContent", []);
+			this.props.f.setState({test: this.props.test});
+		}
 		return (
 			<div className="TestPreview">
-				<h2 onClick={() => this.props.f.loadContentComponent("TestContent", [])}>{this.props.test.name}</h2>
+				<h2 onClick={loadTest}>{this.props.test.name}</h2>
 				<BountyDisplay value={this.props.test.bounty} symbol="BT" />
 			</div>
 		);
@@ -375,7 +387,7 @@ class Response extends React.Component {
 		return (
 			<div className="Response">
 				<input type="radio" id={this.props.response.id} name={this.props.question.id} />
-				<label for={this.props.response.id}>{this.props.response.text}</label>
+				<label for={this.props.response.id}>{this.props.response.name}</label>
 			</div>
 		);
 	}

@@ -15,6 +15,7 @@ class App extends Component {
   constructor(props) {
 	  super(props);
 	  var lcc = this.genLoadContentComponent(this);
+	  var ss = x => this.setState(x);
 	  this.state = {
 		  storageValue: 0,
 		  web3: null,
@@ -25,8 +26,11 @@ class App extends Component {
 
 			contentComponent: "VideoCoent",
 			courses: [],
+			course: [],
+			video: [],
+			test: [],
 
-			f: {loadContentComponent: lcc}
+			f: {loadContentComponent: lcc, setState: ss}
 	  }
   }
 
@@ -40,13 +44,13 @@ class App extends Component {
 	componentDidMount() {
 		fetch("http://localhost:8000/courses").then(
 			(response) => {
-        console.log(response)
-        response.json().then(data => {
-          console.log(data)
-          this.setState({
-            courses: data.data
-          })
-        })
+		        console.log(response)
+		        response.json().then(data => {
+		          console.log(data)
+		          this.setState({
+		            courses: data.data
+		          })
+		        })
 			}
 		)
 	}
@@ -98,7 +102,7 @@ class App extends Component {
 	  return (
 		  <div className="App">
 		  	<Topbar f={this.state.f} />
-		  	<Content component={this.state.contentComponent} data={this.state.contentData} f={this.state.f}/>
+		  	<Content component={this.state.contentComponent} data={this.state.contentData} f={this.state.f} state={this.state}/>
 		  </div>
 	  );
   }/*
