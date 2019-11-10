@@ -1,4 +1,0 @@
-INSERT INTO courses (id, name_, description_, thumbnail_url, bonus_bounty, total_bounty, category_id) 
-VALUES (1, 'Geometry | Early Math', 'Learn how to divide shapes into two or four equal sections.', 'https://i.ytimg.com/vi/0lSTXtwPuOU/hqdefault.jpg?sqp=-oaymwEXCPYBEIoBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDQKkzZVeYGoYNT5ApZBBIfz89apA', 20, 180, 1);
-INSERT INTO courses (id, name_, description_, thumbnail_url, bonus_bounty, total_bounty, category_id) 
-VALUES (2, 'Cosmology & Astronomy', 'First living things on land clarification (This video copyrighted under Create Commons Attribution and Share-Alike CC-BY-SA license). Created by Sal Khan.', 'https://i.ytimg.com/vi/3gUE_P9T-Wk/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLCc2KcSJfCYoSKano0GR-kNzaNEUw', 35, 200, 2);
