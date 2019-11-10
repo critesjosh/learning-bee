@@ -1,1 +1,2 @@
 CREATE DATABASE learningbee;
+GRANT ALL PRIVILEGES ON DATABASE learningbee TO test;

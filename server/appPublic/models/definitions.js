@@ -16,51 +16,52 @@ class Definitions {
 
         this.Category = this.sequelize.define('categorys', {
             id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
-            name: {type: Sequelize.STRING, allowNull: false}
+            name_: {type: Sequelize.STRING, allowNull: false}
         }, {});
 
         this.Course = this.sequelize.define('courses', {
             id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
-            name: {type: Sequelize.STRING, allowNull: false},
-            description: {type: Sequelize.STRING, allowNull: false},
+            name_: {type: Sequelize.STRING, allowNull: false},
+            description_: {type: Sequelize.STRING, allowNull: false},
             thumbnail_url: {type: Sequelize.STRING, allowNull: false},
             bonus_bounty: {type: Sequelize.INTEGER, allowNull: false},
             total_bounty: {type: Sequelize.INTEGER, allowNull: false},
             category_id: {type: Sequelize.INTEGER, allowNull: false}
         }, {});
 
-        this.Category.belongsTo(this.Course, {foreignKey: 'category_id'});
+        this.Course.belongsTo(this.Category, {foreignKey: 'category_id'});
 
         this.Video = this.sequelize.define('videos', {
             id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
-            name: {type: Sequelize.STRING, allowNull: false},
-            description: {type: Sequelize.STRING, allowNull: false},
+            name_: {type: Sequelize.STRING, allowNull: false},
+            description_: {type: Sequelize.STRING, allowNull: false},
             thumbnail_url: {type: Sequelize.STRING, allowNull: false},
-            url: {type: Sequelize.STRING, allowNull: false},
+            youtube_id: {type: Sequelize.STRING, allowNull: false},
             length: {type: Sequelize.INTEGER, allowNull: false},
             bounty: {type: Sequelize.INTEGER, allowNull: false},
             course_id: {type: Sequelize.INTEGER, allowNull: false},
         })
 
-        this.Course.belongsTo(this.Video, {foreignKey: 'course_id'});
+        this.Video.belongsTo(this.Course, {foreignKey: 'course_id'});
+        this.Video.belongsTo(this.Category, {foreignKey: 'category_id'});
         
         this.Test = this.sequelize.define('tests', {
             id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
-            name: {type: Sequelize.STRING, allowNull: false},
+            name_: {type: Sequelize.STRING, allowNull: false},
             bounty: {type: Sequelize.INTEGER, allowNull: false},
             video_id: {type: Sequelize.INTEGER, allowNull: false},
         })
 
-        this.Video.belongsTo(this.Test, {foreignKey: 'video_id'});
+        this.Test.belongsTo(this.Video, {foreignKey: 'video_id'});
 
         this.Question = this.sequelize.define('questions', {
             id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
-            name: {type: Sequelize.STRING, allowNull: false},
+            name_: {type: Sequelize.STRING, allowNull: false},
             text: {type: Sequelize.STRING, allowNull: false},
             test_id: {type: Sequelize.INTEGER, allowNull: false},
         })
 
-        this.Test.belongsTo(this.Question, {foreignKey: 'test_id'});
+        this.Question.belongsTo(this.Test, {foreignKey: 'test_id'});
 
         this.Response = this.sequelize.define('responses', {
             id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
@@ -69,7 +70,7 @@ class Definitions {
             question_id: {type: Sequelize.INTEGER, allowNull: false},
         })
 
-        this.Question.belongsTo(this.Response, {foreignKey: 'question_id'});
+        this.Response.belongsTo(this.Question, {foreignKey: 'question_id'});
 
         this.User = this.sequelize.define('users', {
             id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
@@ -81,20 +82,24 @@ class Definitions {
             user_id: {type: Sequelize.INTEGER, allowNull: false},
             video_id: {type: Sequelize.INTEGER, allowNull: false},
             event_type: {type: Sequelize.STRING, allowNull: false},
-        }, {});
+        }, {
+            timestamps: true,  // I do want timestamps here
+        });
 
-        this.User.belongsTo(this.UserVideoEvent, {foreignKey: 'user_id'});
-        this.Video.belongsTo(this.UserVideoEvent, {foreignKey: 'video_id'});
+        this.UserVideoEvent.belongsTo(this.User, {foreignKey: 'user_id'});
+        this.UserVideoEvent.belongsTo(this.Video, {foreignKey: 'video_id'});
 
         this.UserTestEvent = this.sequelize.define('user_test_events', {
             id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
             user_id: {type: Sequelize.INTEGER, allowNull: false},
             test_id: {type: Sequelize.INTEGER, allowNull: false},
             passed: {type: Sequelize.BOOLEAN, allowNull: false},
-        }, {});
+        }, {
+            timestamps: true,  // I do want timestamps here
+        });
 
-        this.User.belongsTo(this.UserTestEvent, {foreignKey: 'user_id'});
-        this.Test.belongsTo(this.UserTestEvent, {foreignKey: 'test_id'});
+        this.UserTestEvent.belongsTo(this.User, {foreignKey: 'user_id'});
+        this.UserTestEvent.belongsTo(this.Test, {foreignKey: 'test_id'});
 
         this.UserTestEventResponse = this.sequelize.define('user_test_event_responses', {
             id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
@@ -102,8 +107,8 @@ class Definitions {
             response_id: {type: Sequelize.INTEGER, allowNull: false},
         }, {});
 
-        this.UserTestEvent.belongsTo(this.UserTestEventResponse, {foreignKey: 'user_test_event_id'});
-        this.Response.belongsTo(this.UserTestEventResponse, {foreignKey: 'response_id'});
+        this.UserTestEventResponse.belongsTo(this.UserTestEvent, {foreignKey: 'user_test_event_id'});
+        this.UserTestEventResponse.belongsTo(this.Response, {foreignKey: 'response_id'});
 
     }
 }

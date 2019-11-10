@@ -377,7 +377,7 @@ definitions:
       length:
         type: "integer"
         format: "int64"
-      url:
+      youtubeId:
         type: "string"
       bounty:
         type: "integer"
