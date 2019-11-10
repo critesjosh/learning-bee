@@ -9,6 +9,8 @@ class Handlers {
         //extra controllers
         this.errors = new (require('./errors.js'))();
 		this.user = new (require('./user.js'))(this.helpers, this.models, this.errors);
+		this.video = new (require('./video.js'))(this.helpers, this.models, this.errors);
+		this.course = new (require('./course.js'))(this.helpers, this.models, this.errors);
 
     }
 }
