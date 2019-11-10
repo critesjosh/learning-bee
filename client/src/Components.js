@@ -307,6 +307,7 @@ class VideoPreview extends React.Component {
 					<BountyDisplay value={this.props.video.bounty} symbol="BT" />
 				</div>
 				<div className="tests">
+					<h2> Bonus Challenges</h2>
 					{tests}
 				</div>
 			</div>
@@ -320,8 +321,9 @@ class VideoContent extends React.Component {
 		return (
 			<div className="VideoContent">
 				<Summary name={this.props.video.name} description={this.props.video.description} bounty={this.props.video.bounty} />
-				<Video video={this.props.video}/>
+				<Video video={this.props.video} f={this.props.f}/>
 				<div className="tests">
+					<h2> Bonus Challenges</h2>
 					{tests}
 				</div>
 			</div>
@@ -331,9 +333,14 @@ class VideoContent extends React.Component {
 
 class Video extends React.Component {
 	render() {
+		const OnEnd = () => {
+			const payout = this.props.video.bounty;
+			this.props.f.mint(payout);
+
+		}
 		return (
 			<div className="Video">
-				<YouTube videoId={this.props.video.youtubeId} />
+				<YouTube videoId={this.props.video.youtubeId} onEnd={OnEnd} />
 			</div>
 		);
 	}
@@ -364,7 +371,7 @@ class TestContent extends React.Component {
 				<Summary name={this.props.test.name} description="" bounty={this.props.test.bounty} />
 				{questions}
 				<br /> <br />
-				<TestSubmit />
+				<TestSubmit test={this.props.test} f={this.props.f}/>
 			</div>
 		);
 	}
@@ -395,9 +402,13 @@ class Response extends React.Component {
 
 class TestSubmit extends React.Component {
 	render() {
+		const pay = () => {
+			const payout = this.props.test.bounty;
+			this.props.f.mint(payout);
+		}
 		return (
 			<div className="TestSubmit">
-				<button>Submit</button>
+				<button onClick={pay}>Submit</button>
 			</div>
 		);
 	}
