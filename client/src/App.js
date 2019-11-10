@@ -7,6 +7,9 @@ import {Topbar, Content} from "./Components"
 import { InjectedSigner, LocalSigner } from "@burner-wallet/core/signers"
 import { InfuraGateway } from "@burner-wallet/core/gateways"
 import Web3 from "web3";
+import ReactNotification from 'react-notifications-component'
+import {store} from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
 
 import "./App.css";
 
@@ -42,20 +45,10 @@ class App extends Component {
 		  });
 	  }
   }
-	componentDidMount() {
-		fetch("http://localhost:8000/courses").then(
-			(response) => {
-		        response.json().then(data => {
-		          this.setState({
-		            courses: data.data
-		          })
-		        })
-			}
-		)
-	}
 
 
   componentDidMount = async () => {
+
     try {
       // // Get network provider and web3 instance.
       // const web3 = await getWeb3();
@@ -76,7 +69,7 @@ class App extends Component {
         gateways: [new InfuraGateway("91d12e33ffac42f096dc6ca9597415a3")],
       });
 
-         
+
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
@@ -85,16 +78,56 @@ class App extends Component {
         burnerCore: core,
         account: accounts[0]
       });
-      
-      
+
+	  var mint = (amount) => {
+		  fetch('http://localhost:8000/pay', {
+			  method: 'POST',
+			  headers: {
+			    'Accept': 'application/json',
+			    'Content-Type': 'application/json',
+			  },
+			  body: JSON.stringify({
+			    address: this.state.account,
+				amount: amount
+			  })
+			})
+
+
+			store.addNotification({
+				title: amount.toString() + " BT Sent.",
+				message: "BT successfully minted.",
+				type: "success",
+				insert: "top",
+			  container: "top-right",
+			  animationIn: ["animated", "fadeIn"],
+			  animationOut: ["animated", "fadeOut"],
+			  width: 150,
+			  dismiss: {
+			    duration: 5000,
+			    onScreen: true
+		  		}
+			})
+	  }
+	  this.state.f.mint = mint;
+	  //this.setState({f: f})
 
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
-        `Failed to load web3, accounts, or contract. Check console for details.`,
+        `Could not connect to Fortmatic.`,
       );
       console.error(error);
     }
+
+	fetch("http://localhost:8000/courses").then(
+		(response) => {
+			response.json().then(data => {
+			  this.setState({
+				courses: data.data
+			  })
+			})
+		}
+	)
   }
 
   endVideo = async () => {
@@ -103,6 +136,7 @@ class App extends Component {
   render() {
 	  return (
 		  <div className="App">
+		  	<ReactNotification />
 		  	<Topbar f={this.state.f} />
 		  	<Content component={this.state.contentComponent} data={this.state.contentData} f={this.state.f} state={this.state}/>
 		  </div>

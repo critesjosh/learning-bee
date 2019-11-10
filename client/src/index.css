@@ -1,8 +1,8 @@
 :root {
-  --bg-color: #f5f5f5;
-  --dark-color: #3d3c38;
-  --accent-color: #fcba03;
-  --bright-color: #fff;
+  --bright-color: #ede2b7;
+  --dark-color: #121212;
+  --accent-color: #f7e300;
+  --bg-color: #d5a654;
   --topbar-height: 55px;
 }
 
@@ -138,12 +138,20 @@ code {
 }
 
 .Summary {
-	background-color: var(--accent-color);
 	border-radius: 4px;
 	margin: 10px;
 	padding: 10px;
 	display: flex;
 	justify-content: space-between;
+}
+
+.CourseContent .Summary {
+	background-color: var(--bg-color);
+
+}
+
+.VideoContent .Summary {
+	background-color: var(--bright-color);
 }
 
 .Summary .image {
@@ -212,14 +220,41 @@ code {
 	text-decoration: underline;
 }
 
+.VideoPreview .tests h2 {
+	margin-left: 10px;
+	text-align: left;
+}
+
+.VideoContent .tests h2 {
+	margin-left: 10px;
+	text-align: left;
+}
+
+
 .TestPreview {
 	float:inherit;
-	background-color: var(--bg-color);
 	border-radius: 4px;
 	margin: 10px;
 	padding: 10px;
 	display: flex;
 	justify-content: space-between;
+}
+
+.CourseContent .TestPreview {
+	background-color: var(--bg-color);
+}
+
+.VideoContent .TestPreview {
+	background-color: var(--bright-color);
+}
+
+.TestContent .Summary {
+	background-color: var(--bright-color);
+}
+
+
+.TestPreview h2 {
+	font-size: 22px;
 }
 
 .TestPreview h2:hover {
