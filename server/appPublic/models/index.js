@@ -38,6 +38,7 @@ class Models {
 			 */
             this.users = new (require('./users.js'))(this.helpers, this.sequelize, this.definitions);
             this.videos = new (require('./videos.js'))(this.helpers, this.sequelize, this.definitions);
+            this.courses = new (require('./courses.js'))(this.helpers, this.sequelize, this.definitions);
 
             return this.sequelize.sync();
 

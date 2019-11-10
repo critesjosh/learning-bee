@@ -42,7 +42,9 @@ class Definitions {
             course_id: {type: Sequelize.INTEGER, allowNull: false},
         })
 
-        this.Video.belongsTo(this.Course, {foreignKey: 'course_id'});
+        this.Course.hasMany(this.Video, {as: 'videos', foreignKey:'course_id'})
+        // this.Video.hasOne(this.Course)
+        // this.Video.belongsTo(this.Course, {foreignKey: 'course_id'});
         this.Video.belongsTo(this.Category, {foreignKey: 'category_id'});
         
         this.Test = this.sequelize.define('tests', {
