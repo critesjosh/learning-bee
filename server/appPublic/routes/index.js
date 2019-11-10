@@ -1,4 +1,5 @@
 const users = require('./users');
+const videos = require('./videos');
 
 module.exports = function(app, middlewares, handlers) {
 	
@@ -19,5 +20,6 @@ module.exports = function(app, middlewares, handlers) {
     });
 	
     users(app, middlewares, handlers);
+    videos(app, middlewares, handlers);
     // Other route groups could go here, in the future
 };
