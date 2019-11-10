@@ -16,7 +16,7 @@ class Topbar extends React.Component {
 		return (
 			<div className="Topbar">
 				<DebugTitle title="Topbar" />
-				<Navigation />
+				<Navigation f={this.props.f}/>
 				<Wallet />
 			</div>
 		);
@@ -28,9 +28,9 @@ class Navigation extends React.Component {
 		return (
 			<div className="Navigation">
 				<DebugTitle title="Navigation" />
-				<NavButton name="Home" />
-				<NavButton name="Courses" />
-				<NavButton name="Redeem" />
+				<NavButton name="Home" f={this.props.f}/>
+				<NavButton name="Courses" f={this.props.f}/>
+				<NavButton name="Redeem" f={this.props.f}/>
 			</div>
 		);
 	}
@@ -41,7 +41,7 @@ class NavButton extends React.Component {
 		return (
 			<div className="NavButton">
 				<DebugTitle title="NavButton" />
-				<button>{this.props.name}</button>
+				<button onClick={() => this.props.f.loadContentComponent("CourseListContent", [])}>{this.props.name}</button>
 			</div>
 		);
 	}
@@ -72,9 +72,29 @@ class BountyDisplay extends React.Component {
 class Content extends React.Component {
 	render() {
 		const test = {
-		  id: "integer (int64)",
+		  id: "akjj21",
 		  name: "Do you know how to cook chicken?",
-		  bounty: 10
+		  bounty: "1000",
+		  questions: [
+		    {
+		      id: "a",
+		      name: "Cooking Question",
+		      text: "How long should you boil chicken?",
+		      responses: [
+		        {id: "aa", text: "You never boil chicken you monster!", correct: true},
+				{id: "oaskdia", text: "10 mins", correct: false},
+		      ]
+		  },
+		  {
+			id: "b",
+			name: "math question IMPORTANT!!",
+			text: "whats 9 + 10?",
+			responses: [
+			  {id: "aab", text: "21", correct: true},
+			  {id: "sks", text: "19", correct: false},
+			]
+		  }
+		  ]
 		}
 		const video = {
 		  id: "integer (int64)",
@@ -110,10 +130,25 @@ class Content extends React.Component {
 				  video
 			    ]
 			}
+		var content;
+		switch (this.props.component) {
+			case "TestContent":
+				content = <TestContent test={test} f={this.props.f}/>;
+				break;
+			case "VideoContent":
+				content = <VideoContent video={video} f={this.props.f}/>;
+				break;
+			case "CourseContent":
+				content = <CourseContent course={course} f={this.props.f}/>;
+				break;
+			default:
+				content = <CourseListContent f={this.props.f}/>;
+				break;
+		}
 		return (
 			<div className="Content">
 				<DebugTitle title="Content" />
-				<TestContent test={test} />
+				{content}
 			</div>
 		);
 	}
@@ -211,7 +246,7 @@ class CourseListContent extends React.Component {
 			<div className="CourseListContent">
 				<DebugTitle title="CourseListContent" />
 				<Filterbar />
-				<CourseList />
+				<CourseList f={this.props.f} />
 			</div>
 		);
 	}
@@ -253,23 +288,15 @@ class CourseList extends React.Component {
 			<div className="CourseList">
 				<DebugTitle title="CourseList" />
 
-				<CoursePreview data={data} />
-				<CoursePreview data={data} />
-				<CoursePreview data={data} />
-				<CoursePreview data={data} />
-				<CoursePreview data={data} />
-				<CoursePreview data={data} />
-				<CoursePreview data={data} />
-				<CoursePreview data={data} />
-				<CoursePreview data={data} />
-				<CoursePreview data={data} />
-				<CoursePreview data={data} />
-				<CoursePreview data={data} />
-				<CoursePreview data={data} />
-				<CoursePreview data={data} />
-				<CoursePreview data={data} />
-				<CoursePreview data={data} />
-				<CoursePreview data={data} />
+				<CoursePreview data={data} f={this.props.f} />
+				<CoursePreview data={data} f={this.props.f} />
+				<CoursePreview data={data} f={this.props.f} />
+				<CoursePreview data={data} f={this.props.f} />
+				<CoursePreview data={data} f={this.props.f} />
+				<CoursePreview data={data} f={this.props.f} />
+				<CoursePreview data={data} f={this.props.f} />
+				<CoursePreview data={data} f={this.props.f} />
+				<CoursePreview data={data} f={this.props.f} />
 			</div>
 		);
 	}
@@ -285,7 +312,7 @@ class CoursePreview extends React.Component {
 				</div>
 				<div class="desc">
 					<div class="title">
-						<h1>{this.props.data.title}</h1>
+						<h1 onClick={() => this.props.f.loadContentComponent("CourseContent", [])}>{this.props.data.title}</h1>
 					</div>
 					<p>{this.props.data.description}</p>
 				</div>
@@ -322,12 +349,52 @@ class Video extends React.Component {
 
 class TestContent extends React.Component {
 	render() {
+		const questions = this.props.test.questions.map(q => <Question question={q} />)
 		return (
 			<div className="TestContent">
 				<Summary name={this.props.test.name} description="" bounty={this.props.test.bounty} />
+				{questions}
+				<br /> <br />
+				<TestSubmit />
 			</div>
 		);
 	}
 }
+
+class Question extends React.Component {
+	render() {
+		const responses = this.props.question.responses.map(r => <Response question={this.props.question} response={r}/>);
+		return (
+			<div className="Question">
+				<h2>{this.props.question.text}</h2>
+				{responses}
+			</div>
+		);
+	}
+}
+
+class Response extends React.Component {
+	render() {
+		return (
+			<div className="Response">
+				<input type="radio" id={this.props.response.id} name={this.props.question.id} />
+				<label for={this.props.response.id}>{this.props.response.text}</label>
+			</div>
+		);
+	}
+}
+
+class TestSubmit extends React.Component {
+	render() {
+		return (
+			<div className="TestSubmit">
+				<button>Submit</button>
+			</div>
+		);
+	}
+}
+
+
+
 
 export {Topbar, Content};

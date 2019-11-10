@@ -11,13 +11,35 @@ import Components, {Topbar, Content} from './Components'
 import "./App.css";
 
 class App extends Component {
-  state = {
-	  storageValue: 0,
-	  web3: null,
-	  accounts: null,
-	  contract: null,
-	  burnerCore: null,
-  };
+
+  constructor(props) {
+	  super(props);
+	  var lcc = this.genLoadContentComponent(this);
+	  this.state = {
+		  storageValue: 0,
+		  web3: null,
+		  accounts: null,
+		  contract: null,
+		  burnerCore: null,
+
+
+			contentComponent: "VideoCoent",
+			contentData: [],
+
+			f: {loadContentComponent: lcc}
+	  }
+  }
+
+  genLoadContentComponent(tis) {
+	  return (contentComponent, contentData) => {
+		  tis.setState({
+			  contentComponent: contentComponent,
+			  contentData: contentData
+		  });
+	  }
+  }
+
+
 
   /*componentDidMount = async () => {
     try {
@@ -62,8 +84,8 @@ class App extends Component {
   render() {
 	  return (
 		  <div className="App">
-		  	<Topbar />
-		  	<Content />
+		  	<Topbar f={this.state.f} />
+		  	<Content component={this.state.contentComponent} data={this.state.contentData} f={this.state.f}/>
 		  </div>
 	  );
   }/*

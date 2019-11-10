@@ -217,3 +217,22 @@ code {
 	display: flex;
 	justify-content: space-between;
 }
+
+.Question {
+	display: block;
+}
+
+.Response {
+	margin: 10px;
+}
+
+.TestSubmit button {
+	margin-top: 8px;
+	font-size: 17px;
+	height: 40px;
+	background-color: inherit;
+	border-radius: 4px;
+	letter-spacing: 2px;
+	border-color: inherit;
+	color: inherit;
+}
