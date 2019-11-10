@@ -47,10 +47,10 @@ INSERT INTO questions (id, name_, text, test_id)
 VALUES (2, 'Question 2', 'This is the second question', 1)
 ON CONFLICT DO NOTHING;
 INSERT INTO questions (id, name_, text, test_id) 
-VALUES (3, 'Question 3', 'This is the third question', 1)
+VALUES (3, 'Question 3', 'This is the third question', 2)
 ON CONFLICT DO NOTHING;
 INSERT INTO questions (id, name_, text, test_id) 
-VALUES (4, 'Question 4', 'This is the fourth question', 1)
+VALUES (4, 'Question 4', 'This is the fourth question', 2)
 ON CONFLICT DO NOTHING;
 
 INSERT INTO responses (id, text, correct, question_id) 
