@@ -1,5 +1,7 @@
 import React from 'react';
 import YouTube from "react-youtube";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/fontawesome-free-solid'
 
 class DebugTitle extends React.Component {
 	render(){
@@ -199,9 +201,17 @@ class Filterbar extends React.Component {
 
 class Search extends React.Component {
 	render() {
+
+		const iconStyle = {
+			position: "relative",
+			right: "-40%",
+			top: "37px",
+		};
+
 		return (
 			<div className="Search">
 				<DebugTitle title="Search" />
+				<div style={iconStyle}><FontAwesomeIcon  icon={faSearch} /></div>
 				<input type="text" name="fname" />
 			</div>
 		);
