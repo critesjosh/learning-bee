@@ -27,9 +27,20 @@ class Topbar extends React.Component {
 
 class Navigation extends React.Component {
 	render() {
+
+		const imageStyle = {
+			width: "57px",
+			height: "50px",
+			float: "left",
+			"margin-top": "1px"
+		}
+
 		return (
 			<div className="Navigation">
 				<DebugTitle title="Navigation" />
+				<div>
+					<img style={imageStyle} src={require('./logo.png')} width="114" height="100"/>
+				</div>
 				<NavButton name="Home" f={this.props.f}/>
 				<NavButton name="Courses" f={this.props.f}/>
 				<NavButton name="Redeem" f={this.props.f}/>
@@ -204,7 +215,7 @@ class Search extends React.Component {
 
 		const iconStyle = {
 			position: "relative",
-			right: "-40%",
+			right: "-35%",
 			top: "37px",
 		};
 
