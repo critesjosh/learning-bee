@@ -10,9 +10,10 @@ let contractAddress = token.networks["3"].address
 
 let tokenContract = new ethers.Contract(contractAddress, abi, wallet)
 
-async function mintTokens(to, amount){
-    let result = await tokenContract.mint(to, amount)
-    console.log(result)
+function mintTokens(to, amount){
+    return new Promise((resolve, reject) => {
+        tokenContract.mint(to, amount).then(resolve).catch(reject)
+    })
 }
 
 let mintToAddress = "0x2ED8D02DE367F671Ec77bcDa23F59DdFb6b81147"  // <-- this should be the address received from the client
@@ -32,13 +33,13 @@ class Something {
 
     pay(address, amount) {
         return new Promise((resolve, reject) => {
-
-            mintTokens(address, amount)
-					
-            resolve({
-                code: 200,
-                message: "Payment successful"
-            });
+            mintTokens(address, amount).then(response => {
+                console.log(response)
+                resolve({
+                    code: 200,
+                    message: "Payment successful"
+                });
+            })
         });
     };
 };
