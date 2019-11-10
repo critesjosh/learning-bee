@@ -69,7 +69,7 @@ code {
 
 .Content {
 	overflow-x: hidden;
-    overflow-x: auto; 
+    overflow-x: auto;
 	margin-top: var(--topbar-height);
 	height: 100%;
 }
@@ -127,4 +127,93 @@ code {
 	margin: auto;
 	width: 100px;
 	color: var(--accent-color);
+}
+
+.CourseContent {
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
+	align-items: center;
+	display: inline;
+}
+
+.Summary {
+	background-color: var(--accent-color);
+	border-radius: 4px;
+	margin: 10px;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.Summary .image {
+	float: left;
+	width: 150px;
+}
+
+.Summary .image img {
+	width: 150px;
+}
+
+.Summary .description {
+	float: left;
+	text-align: left;
+	margin-left: 10px;
+	color: var(--dark-color);
+	font-size: 13px;
+}
+
+.CourseSyllabus {
+}
+
+
+.BountyDisplay {
+	float: left;
+	width: 100px;
+	color: var(--dark-color);
+	font-size: 13px;
+}
+.BountyDisplay h1 {
+	float: left;
+}
+.BountyDisplay p {
+	float: left;
+}
+
+.VideoPreview {
+	background-color: var(--bright-color);
+	border-radius: 4px;
+	margin: 10px;
+	padding: 10px;
+	display: block;
+}
+
+.VideoPreview .info{
+	margin: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.VideoPreview .info img{
+	width: 250px;
+	float: left;
+	align-items: flex-start;
+}
+
+.VideoPreview .info .description {
+	float: left;
+	color: var(--dark-color);
+	font-size: 15px;
+	text-align: left;
+	margin-left: 20px;
+}
+
+.TestPreview {
+	float:inherit;
+	background-color: var(--bg-color);
+	border-radius: 4px;
+	margin: 10px;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
 }

@@ -11,7 +11,13 @@ import Components, {Topbar, Content} from './Components'
 import "./App.css";
 
 class App extends Component {
-  state = { storageValue: 0, web3: null, accounts: null, contract: null, burnerCore: null };
+  state = {
+	  storageValue: 0,
+	  web3: null,
+	  accounts: null,
+	  contract: null,
+	  burnerCore: null,
+  };
 
   /*componentDidMount = async () => {
     try {
