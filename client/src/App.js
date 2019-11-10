@@ -40,13 +40,13 @@ class App extends Component {
 	componentDidMount() {
 		fetch("http://localhost:8000/courses").then(
 			(response) => {
-        console.log(response)
-        response.json().then(data => {
-          console.log(data)
-          this.setState({
-            courses: data.data
-          })
-        })
+		        console.log(response)
+		        response.json().then(data => {
+		          console.log(data)
+		          this.setState({
+		            courses: data.data
+		          })
+		        })
 			}
 		)
 	}
@@ -96,7 +96,7 @@ class App extends Component {
 	  return (
 		  <div className="App">
 		  	<Topbar f={this.state.f} />
-		  	<Content component={this.state.contentComponent} data={this.state.contentData} f={this.state.f}/>
+		  	<Content component={this.state.contentComponent} data={this.state.contentData} f={this.state.f} courses={this.state.courses}/>
 		  </div>
 	  );
   }/*

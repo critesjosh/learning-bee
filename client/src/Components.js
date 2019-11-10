@@ -158,7 +158,7 @@ class Content extends React.Component {
 				content = <CourseContent course={course} f={this.props.f}/>;
 				break;
 			default:
-				content = <CourseListContent f={this.props.f}/>;
+				content = <CourseListContent f={this.props.f} courses={this.props.courses}/>;
 				break;
 		}
 		return (
@@ -178,7 +178,7 @@ class CourseListContent extends React.Component {
 			<div className="CourseListContent">
 				<DebugTitle title="CourseListContent" />
 				<Filterbar f={this.props.f} />
-				<CourseList f={this.props.f} />
+				<CourseList f={this.props.f} courses={this.props.courses}/>
 			</div>
 		);
 	}
@@ -210,13 +210,10 @@ class Search extends React.Component {
 
 class CourseList extends React.Component {
 	render() {
-		//const courses = this.props.courses.map(c => <CoursePreview course={c} f={this.props.f} />);
-		const courses = [];
+		const courses = this.props.courses.map(c => <CoursePreview course={c} f={this.props.f} />);
 		return (
 			<div className="CourseList">
 				<DebugTitle title="CourseList" />
-
-
 				{courses}
 			</div>
 		);
@@ -231,15 +228,15 @@ class CoursePreview extends React.Component {
 			<div className="CoursePreview">
 			<DebugTitle title="CoursePreview" />
 				<div class="img">
-					<img src={this.props.data.imgURL} />
+					{/*<img src={this.props.course["thumbnail_url"]} />*/}
 				</div>
 				<div class="desc">
 					<div class="title">
-						<h1 onClick={() => this.props.f.loadContentComponent("CourseContent", [])}>{this.props.data.title}</h1>
+						<h1 onClick={() => this.props.f.loadContentComponent("CourseContent", [])}>{this.props.course.name}</h1>
 					</div>
-					<p>{this.props.data.description}</p>
+					<p>{this.props.course.description}</p>
 				</div>
-				<BountyDisplay value={this.props.data.bounty} symbol="BT" />
+				<BountyDisplay value={this.props.course["total_bounty"]} symbol="BT" />
 			</div>
 		);
 	}
