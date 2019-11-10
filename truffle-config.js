@@ -1,4 +1,5 @@
 const path = require("path");
+const HDWalletProvider = require("truffle-hdwallet-provider");
 
 const keys = [
   "da18464c8211a087da281da3aa3010364ef0421bc52f6a3fefc42fc103e7ca6c",
@@ -15,6 +16,12 @@ module.exports = {
       host: "127.0.0.1",
       port: 8545,
       network_id: "*"
-    }
+    },
+    ropsten: {
+      provider: function() {
+        return new HDWalletProvider(keys, "https://ropsten.infura.io/v3/91d12e33ffac42f096dc6ca9597415a3");
+      },
+      network_id: '3',
+    },
   }
 };
