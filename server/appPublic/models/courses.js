@@ -88,9 +88,9 @@ class Courses {
                             id: course.id,
                             name: course.name_,
                             description: course.description_,
-                            thumbnail_url: course.thumbnail_url,
-                            bonus_bounty: course.bonus_bounty,
-                            total_bounty: course.total_bounty,
+                            thumbnailUrl: course.thumbnail_url,
+                            bonuBounty: course.bonus_bounty,
+                            totalBounty: course.total_bounty,
                             category: course.category = Object.assign(
                                 {},
                                 {
