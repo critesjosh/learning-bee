@@ -1,0 +1,19 @@
+var ethers = require('ethers');
+let token = require("../build/contracts/Token.json")
+
+let provider = ethers.getDefaultProvider('ropsten');
+let wallet = new ethers.Wallet("da18464c8211a087da281da3aa3010364ef0421bc52f6a3fefc42fc103e7ca6c", provider)
+
+let abi = token.abi
+let contractAddress = token.networks["3"].address
+
+let tokenContract = new ethers.Contract(contractAddress, abi, wallet)
+
+async function mintTokens(to, amount){
+    let result = await tokenContract.mint(to, amount)
+    console.log(result)
+}
+
+let mintToAddress = "0x2ED8D02DE367F671Ec77bcDa23F59DdFb6b81147"  // <-- this should be the address received from the client
+let amountToMint = 42
+mintTokens(mintToAddress, amountToMint)
