@@ -35,6 +35,31 @@ schemes:
 - "https"
 - "http"
 paths:
+  /pay:
+    post:
+      tags:
+      - "minting"
+      summary: "Give eth to address"
+      description: ""
+      operationId: "sendMoney"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: body
+        name: payload
+        description: "How much and who to pay."
+        schema:
+          type: object
+          properties:
+            address:
+              type: string
+            amount:
+              type: integer
+      responses:
+        200:
+          description: "successful operation"
   /videos:
     get:
       tags:

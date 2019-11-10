@@ -6,6 +6,8 @@
     "@burner-wallet/assets": "0.0.24",
     "@burner-wallet/core": "0.0.26",
     "@burner-wallet/ui": "0.0.40",
+    "@dfuse/client": "^0.3.0",
+    "@toruslabs/torus-embed": "^0.2.6",
     "fortmatic": "^1.0.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",

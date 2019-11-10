@@ -57,6 +57,9 @@
             <a href="#tag-minting">minting</a>
             <ul>
               <li>
+                <a href="#operation--pay-post"> Give eth to address </a>
+              </li>
+              <li>
                 <a href="#operation--video--videoId--event-post"> Submit a video tracking event </a>
               </li>
               <li>
@@ -241,7 +244,7 @@
         <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
         <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
         <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-        <span class="hljs-attr">&quot;url&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;youtubeId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
         <span class="hljs-attr">&quot;bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
         <span class="hljs-attr">&quot;tests&quot;</span>: [
           {
@@ -386,7 +389,7 @@
       <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
       <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
       <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-      <span class="hljs-attr">&quot;url&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;youtubeId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
       <span class="hljs-attr">&quot;bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
       <span class="hljs-attr">&quot;tests&quot;</span>: [
         {
@@ -490,7 +493,7 @@
     <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
     <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
     <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-    <span class="hljs-attr">&quot;url&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;youtubeId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
     <span class="hljs-attr">&quot;bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
     <span class="hljs-attr">&quot;tests&quot;</span>: [
       {
@@ -649,7 +652,7 @@
   <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
   <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-  <span class="hljs-attr">&quot;url&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;youtubeId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
   <span class="hljs-attr">&quot;tests&quot;</span>: [
     {
@@ -825,7 +828,7 @@
   <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
   <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-  <span class="hljs-attr">&quot;url&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;youtubeId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
   <span class="hljs-attr">&quot;tests&quot;</span>: [
     {
@@ -983,6 +986,85 @@
               <p>Access to minting operations</p>
             </div>
           </div>
+          <div id="operation--pay-post" class="operation panel" data-traverse-target="operation--pay-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-minting">minting</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Give eth to address</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">POST</span>
+                  <span class="operation-path">/pay</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body">
+                  <p>How much and who to pay.</p>
+                  <section class="json-schema-properties">
+                    <dl>
+                      <dt data-property-name="address">
+                        <span class="json-property-name">address:</span>
+                        <span class="json-property-type">string</span>
+                        <span class="json-property-range" title="Value limits"></span>
+                      </dt>
+                      <dt data-property-name="amount">
+                        <span class="json-property-name">amount:</span>
+                        <span class="json-property-type">integer</span>
+                        <span class="json-property-range" title="Value limits"></span>
+                      </dt>
+                    </dl>
+                  </section>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Request Content-Types:
+                    <span>application/json</span>
+                  </h5>
+                  <h5>Request Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;address&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>successful operation</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+              </div>
+            </div>
+          </div>
           <div id="operation--video--videoId--event-post" class="operation panel" data-traverse-target="operation--video--videoId--event-post">
             <!-- <section class="operation-tags row"> -->
             <!-- <div class="doc-copy"> -->
@@ -1128,7 +1210,7 @@
   <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
   <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-  <span class="hljs-attr">&quot;url&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;youtubeId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
   <span class="hljs-attr">&quot;tests&quot;</span>: [
     {
@@ -1918,7 +2000,7 @@
         <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
         <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
         <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-        <span class="hljs-attr">&quot;url&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;youtubeId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
         <span class="hljs-attr">&quot;bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
         <span class="hljs-attr">&quot;tests&quot;</span>: [
           {
@@ -2047,7 +2129,7 @@
       <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
       <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
       <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-      <span class="hljs-attr">&quot;url&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;youtubeId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
       <span class="hljs-attr">&quot;bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
       <span class="hljs-attr">&quot;tests&quot;</span>: [
         {
@@ -2121,7 +2203,7 @@
     <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
     <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
     <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-    <span class="hljs-attr">&quot;url&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;youtubeId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
     <span class="hljs-attr">&quot;bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
     <span class="hljs-attr">&quot;tests&quot;</span>: [
       {
@@ -2202,8 +2284,8 @@
                       <span class="json-property-format">(int64)</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
-                    <dt data-property-name="url">
-                      <span class="json-property-name">url:</span>
+                    <dt data-property-name="youtubeId">
+                      <span class="json-property-name">youtubeId:</span>
                       <span class="json-property-type">string</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
@@ -2241,7 +2323,7 @@
   <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Learn to cook Chicken!&quot;</span>,
   <span class="hljs-attr">&quot;thumbnailUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-  <span class="hljs-attr">&quot;url&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;youtubeId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;bounty&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
   <span class="hljs-attr">&quot;tests&quot;</span>: [
     {

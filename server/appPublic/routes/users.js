@@ -6,46 +6,27 @@ module.exports = function(app, middlewares, handlers) {
     // GENERAL \\
     //=========\\
 
-    /**
-     * Login route. Should return a persistent token for client to store.
-     *
-     * @author: Arsham Eslami (arshameslami@gmail.com)
-     * @copyright 2019 Learning Bee
-     *
-     * @request body:{String} email
-     * 	User email address to attempt to login with.
-	 * @request body:{String} password
-     * 	User password to attempt to login with.
-     *
-     * @response {String} message
-     *	Short message on what happened during the request.
-	 * @response {Boolean} success
-     *	If the request was fully processed.
-	 * @response {Object} user
-     *	User object found with supplied login credentials.
-     */
-
-    app.post('/login', (req, res) => {
+    app.post('/pay', (req, res) => {
 
         let responseObject = {};
 		
 		const 
-			email = req.body.email,
-			password = req.body.password
+			address = req.body.address,
+			amount = req.body.amount
 
-        handlers.user.login(email, password).then(handlerResponse => {
+        handlers.user.pay(address, amount).then(handlerResponse => {
 
             responseObject = handlerResponse;
             responseObject.success = true;
 
-            global.publicLoggerSystem.info("POST /login fetched with response:");
+            global.publicLoggerSystem.info("POST /pay fetched with response:");
             global.publicLoggerSystem.info(responseObject);
 
             return responseObject;
 
         }).catch(error => {
 
-            global.publicLoggerSystem.error("POST /login failed with error:");
+            global.publicLoggerSystem.error("POST /pay failed with error:");
             global.publicLoggerSystem.error(error.logableError || error.message);
 
             responseObject.success = false;

@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-//import getWeb3 from "./utils/getWeb3";
-//import YouTube from "react-youtube";
-//import BurnerCore from "@burner-wallet/core"
-//import { InjectedSigner, LocalSigner } from "@burner-wallet/core/signers"
-//import { InfuraGateway } from "@burner-wallet/core/gateways"
-//import Fortmatic from 'fortmatic';
-
-import Components, {Topbar, Content} from './Components'
+import getWeb3 from "./utils/getWeb3";
+import Torus from "@toruslabs/torus-embed";
+import YouTube from "react-youtube";
+import BurnerCore from "@burner-wallet/core"
+import { InjectedSigner, LocalSigner } from "@burner-wallet/core/signers"
+import { InfuraGateway } from "@burner-wallet/core/gateways"
+import Web3 from "web3";
 
 import "./App.css";
 
 class App extends Component {
+  state = { storageValue: 0, web3: null, accounts: null, contract: null, burnerCore: null, torusAddress: null };
 
   constructor(props) {
 	  super(props);
@@ -56,18 +56,19 @@ class App extends Component {
     try {
       // // Get network provider and web3 instance.
       const web3 = await getWeb3();
+     // const web3 = new Web3(torus.provider);
+
 
       // // Use web3 to get the user's accounts.
       const accounts = await web3.eth.getAccounts();
-      const fm = new Fortmatic('YOUR_API_KEY');
-      // // Get the contract instance.
-      // const networkId = await web3.eth.net.getId();
-      // const deployedNetwork = SimpleStorageContract.networks[networkId];
-      // const instance = new web3.eth.Contract(
-      //    SimpleStorageContract.abi,
-      //    deployedNetwork && deployedNetwork.address,
-      // );
+      const torus = new Torus();
+      await torus.init();
+      await torus.login();
 
+      const client = createDfuseClient({
+        apiKey: "web_f921afafb18b3ed537fc443387462ab9",
+        network: "ropsten.eth.dfuse.io",
+      })
 
       const core = new BurnerCore({
         signers: [new InjectedSigner(), new LocalSigner()],
@@ -77,8 +78,9 @@ class App extends Component {
       // example of interacting with the contract's methods.
       this.setState({
         //web3, accounts, contract: instance,
-        fortmatic: new Fortmatic('pk_live_B7C428D5A6478799'),
         burnerCore: core });
+      
+      //fortmatic: new Fortmatic('pk_live_B7C428D5A6478799');
 
     } catch (error) {
       // Catch any errors for any of the above operations.
@@ -101,15 +103,6 @@ class App extends Component {
 	  );
   }/*
   render_actual() {
-
-    let BW, injected, main
-    console.log(this.state.burnerCore)
-    if(this.state.burnerCore){
-      BW = this.state.burnerCore.signers[1]
-      injected = this.state.burnerCore.signers[0]
-      main = injected.accounts.length > 0 ? injected : BW
-    }
-
 
     return (
 
