@@ -3,6 +3,8 @@
 
 eth waterloo hackathon project
 
+[Live App](http://35.188.7.242:3000)
+
 Learning Bee is site that hosts educational content and pays users to learn.
 
 ## How does it work?
