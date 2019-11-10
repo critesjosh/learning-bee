@@ -2,6 +2,7 @@ const express       = require('express');
 const cors       = require('cors');
 const bodyParser    = require('body-parser');
 const appPublic     = express();
+const proxy         = require('express-http-proxy');
 
 // Create our helpers class instance
 const helpers = new (require("./common/helpers/helpers.js"))();
@@ -27,7 +28,9 @@ appPublic.use(bodyParser.json());
 
 appPublic.use(cors());
 
-appPublic.use(express.static(__dirname + '/appPublic/docs'));
+appPublic.use('/docs', express.static(__dirname + '/appPublic/docs'));
+
+// appPublic.use('/', proxy('http://localhost:3000'));
 
 // Initialize our internal handler class instance
 const publicHandlers = new (require('./appPublic/handlers'))(helpers, models);

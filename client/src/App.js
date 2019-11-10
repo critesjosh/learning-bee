@@ -40,10 +40,13 @@ class App extends Component {
 	componentDidMount() {
 		fetch("http://localhost:8000/courses").then(
 			(response) => {
-				console.log(response.json())
-				this.setState({
-					courses: response.json().data
-				})
+        console.log(response)
+        response.json().then(data => {
+          console.log(data)
+          this.setState({
+            courses: data.data
+          })
+        })
 			}
 		)
 	}
