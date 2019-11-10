@@ -1,4 +1,5 @@
 const express       = require('express');
+const cors       = require('cors');
 const bodyParser    = require('body-parser');
 const appPublic     = express();
 
@@ -23,6 +24,8 @@ const middlewares = new (require('./common/middlewares/middlewares.js'))(helpers
 appPublic.use(bodyParser.urlencoded({ extended: true }));
 // Use bodyParser to allow Express to parse application/json
 appPublic.use(bodyParser.json());
+
+appPublic.use(cors());
 
 appPublic.use(express.static(__dirname + '/appPublic/docs'));
 
