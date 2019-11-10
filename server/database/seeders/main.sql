@@ -24,7 +24,7 @@ INSERT INTO videos (id, name_, description_, thumbnail_url, youtube_id, length, 
 VALUES (1, 'Halves and fourths', 'Learn how to divide shapes into two or four equal sections.', 'https://i.ytimg.com/vi/0lSTXtwPuOU/hqdefault.jpg?sqp=-oaymwEXCPYBEIoBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDQKkzZVeYGoYNT5ApZBBIfz89apA', '0lSTXtwPuOU', 144, 1, 10, 1)
 ON CONFLICT DO NOTHING;
 INSERT INTO videos (id, name_, description_, thumbnail_url, youtube_id, length, category_id, bounty, course_id) 
-VALUES (2, 'First living things on land clarification', 'Learn how to divide shapes into two or four equal sections.', 'https://i.ytimg.com/vi/3gUE_P9T-Wk/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLCc2KcSJfCYoSKano0GR-kNzaNEUw', '3gUE_P9T-Wk', 334, 2, 15, 2)
+VALUES (2, 'First living things on land clarification', 'The Earth is huge, but it is tiny compared to the Sun (which is super huge). But the Sun is tiny compared to the solar system which is tiny compared to the distance to the next star. ', 'https://i.ytimg.com/vi/3gUE_P9T-Wk/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLCc2KcSJfCYoSKano0GR-kNzaNEUw', '3gUE_P9T-Wk', 334, 2, 15, 2)
 ON CONFLICT DO NOTHING;
 INSERT INTO videos (id, name_, description_, thumbnail_url, youtube_id, length, category_id, bounty, course_id) 
 VALUES (3, 'Carbon 14 dating 2', 'The Earth is huge, but it is tiny compared to the Sun (which is super huge).', 'https://i.ytimg.com/vi/4YUtnod-YuE/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLABjMs_OaqmrXnp0_5MzsxT-YZTdg', '4YUtnod-YuE', 254, 2, 15, 2)
