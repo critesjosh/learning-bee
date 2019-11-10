@@ -69,6 +69,22 @@ class BountyDisplay extends React.Component {
 	}
 }
 
+class Summary extends React.Component {
+	render() {
+		return (
+			<div className="Summary">
+				<div className="description">
+					<div className="title">
+						<h1>{this.props.name}</h1>
+					</div>
+					<p>{this.props.description}</p>
+				</div>
+				<BountyDisplay value={this.props.bounty} symbol="BT"/>
+			</div>
+		);
+	}
+}
+
 class Content extends React.Component {
 	render() {
 		const test = {
@@ -154,98 +170,14 @@ class Content extends React.Component {
 	}
 }
 
-class CourseContent extends React.Component {
-	render() {
-		return (
-			<div className="CourseContent">
-				<DebugTitle title="CourseContent" />
-				<CourseSummary course={this.props.course} />
-				<CourseSyllabus course={this.props.course} />
-			</div>
-		);
-	}
-}
-
-class CourseSummary extends React.Component {
-	render() {
-		return (
-			<div className="CourseSummary">
-				<Summary name={this.props.course.name} description={this.props.course.description} bounty={this.props.course["total-bounty"]} />
-			</div>
-		);
-	}
-}
-
-class Summary extends React.Component {
-	render() {
-		return (
-			<div className="Summary">
-				<div className="description">
-					<div className="title">
-						<h1>{this.props.name}</h1>
-					</div>
-					<p>{this.props.description}</p>
-				</div>
-				<BountyDisplay value={this.props.bounty} symbol="BT"/>
-			</div>
-		);
-	}
-}
-
-class CourseSyllabus extends React.Component {
-	render() {
-		const videos
-			= this.props.course.videos.map(v => (<VideoPreview video={v} />));
-		return (
-			<div className="CourseSyllabus">
-				<DebugTitle title="CourseSyllabus" />
-				{videos}
-			</div>
-		);
-	}
-}
-
-class VideoPreview extends React.Component {
-	render() {
-		const tests = this.props.video.tests.map(t => (<TestPreview test={t} />));
-		return (
-			<div className="VideoPreview">
-				<DebugTitle title="VideoPreview" />
-				<div className="info">
-					<div>
-						<img src={this.props.video.thumbnailUrl} />
-						<div className="description">
-							<h1>{this.props.video.name}</h1>
-							<p>{this.props.video.description}</p>
-						</div>
-					</div>
-					<BountyDisplay value={this.props.video.bounty} symbol="BT" />
-				</div>
-				<div className="tests">
-					{tests}
-				</div>
-			</div>
-		);
-	}
-}
-
-class TestPreview extends React.Component {
-	render() {
-		return (
-			<div className="TestPreview">
-				<h2>{this.props.test.name}</h2>
-				<BountyDisplay value={this.props.test.bounty} symbol="BT" />
-			</div>
-		);
-	}
-}
+// Course List
 
 class CourseListContent extends React.Component {
 	render() {
 		return (
 			<div className="CourseListContent">
 				<DebugTitle title="CourseListContent" />
-				<Filterbar />
+				<Filterbar f={this.props.f} />
 				<CourseList f={this.props.f} />
 			</div>
 		);
@@ -257,8 +189,8 @@ class Filterbar extends React.Component {
 		return (
 			<div className="Filterbar">
 				<DebugTitle title="Filterbar" />
-				<NavButton name="My Courses"/>
-				<NavButton name="Discover"/>
+				<NavButton name="My Courses" f={this.props.f}/>
+				<NavButton name="Discover" f={this.props.f}/>
 				<Search />
 			</div>
 		);
@@ -302,6 +234,8 @@ class CourseList extends React.Component {
 	}
 }
 
+// Course
+
 class CoursePreview extends React.Component {
 	render() {
 		return (
@@ -322,9 +256,70 @@ class CoursePreview extends React.Component {
 	}
 }
 
+class CourseContent extends React.Component {
+	render() {
+		return (
+			<div className="CourseContent">
+				<DebugTitle title="CourseContent" />
+				<CourseSummary course={this.props.course} />
+				<CourseSyllabus course={this.props.course} f={this.props.f} />
+			</div>
+		);
+	}
+}
+
+class CourseSummary extends React.Component {
+	render() {
+		return (
+			<div className="CourseSummary">
+				<Summary name={this.props.course.name} description={this.props.course.description} bounty={this.props.course["total-bounty"]} />
+			</div>
+		);
+	}
+}
+
+class CourseSyllabus extends React.Component {
+	render() {
+		const videos
+			= this.props.course.videos.map(v => (<VideoPreview video={v} f={this.props.f} />));
+		return (
+			<div className="CourseSyllabus">
+				<DebugTitle title="CourseSyllabus" />
+				{videos}
+			</div>
+		);
+	}
+}
+
+// Video
+
+class VideoPreview extends React.Component {
+	render() {
+		const tests = this.props.video.tests.map(t => (<TestPreview test={t} f={this.props.f} />));
+		return (
+			<div className="VideoPreview">
+				<DebugTitle title="VideoPreview" />
+				<div className="info">
+					<div>
+						<img src={this.props.video.thumbnailUrl} />
+						<div className="description">
+							<h1 onClick={() => this.props.f.loadContentComponent("VideoContent", [])}>{this.props.video.name}</h1>
+							<p>{this.props.video.description}</p>
+						</div>
+					</div>
+					<BountyDisplay value={this.props.video.bounty} symbol="BT" />
+				</div>
+				<div className="tests">
+					{tests}
+				</div>
+			</div>
+		);
+	}
+}
+
 class VideoContent extends React.Component {
 	render() {
-		const tests = this.props.video.tests.map(t => (<TestPreview test={t} />));
+		const tests = this.props.video.tests.map(t => (<TestPreview test={t} f={this.props.f} />));
 		return (
 			<div className="VideoContent">
 				<Summary name={this.props.video.name} description={this.props.video.description} bounty={this.props.video.bounty} />
@@ -342,6 +337,19 @@ class Video extends React.Component {
 		return (
 			<div className="Video">
 				<YouTube videoId={this.props.video.youtubeId} />
+			</div>
+		);
+	}
+}
+
+// Test
+
+class TestPreview extends React.Component {
+	render() {
+		return (
+			<div className="TestPreview">
+				<h2 onClick={() => this.props.f.loadContentComponent("TestContent", [])}>{this.props.test.name}</h2>
+				<BountyDisplay value={this.props.test.bounty} symbol="BT" />
 			</div>
 		);
 	}

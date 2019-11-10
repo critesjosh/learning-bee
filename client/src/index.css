@@ -208,6 +208,10 @@ code {
 	margin-left: 20px;
 }
 
+.VideoPreview h1:hover {
+	text-decoration: underline;
+}
+
 .TestPreview {
 	float:inherit;
 	background-color: var(--bg-color);
@@ -216,6 +220,10 @@ code {
 	padding: 10px;
 	display: flex;
 	justify-content: space-between;
+}
+
+.TestPreview h2:hover {
+	text-decoration: underline;
 }
 
 .Question {
