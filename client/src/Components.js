@@ -241,9 +241,7 @@ class CoursePreview extends React.Component {
 		return (
 			<div className="CoursePreview">
 			<DebugTitle title="CoursePreview" />
-				<div class="img">
-					{/*<img src={this.props.course["thumbnailIrl"]} />*/}
-				</div>
+				<img src={this.props.course["thumbnailUrl"]} />
 				<div class="desc">
 					<div class="title">
 						<h1 onClick={loadCourse}>{this.props.course.name}</h1>
@@ -272,7 +270,7 @@ class CourseSummary extends React.Component {
 	render() {
 		return (
 			<div className="CourseSummary">
-				<Summary name={this.props.course.name} description={this.props.course.description} bounty={this.props.course["total-bounty"]} />
+				<Summary name={this.props.course.name} description={this.props.course.description} bounty={this.props.course["totalBounty"]} />
 			</div>
 		);
 	}
@@ -302,13 +300,23 @@ class VideoPreview extends React.Component {
 			this.props.f.setState({video: this.props.video});
 		}
 
+		var testList = (
+			<div className="tests">
+				<h2>Bonus Challenges</h2>
+				{tests}
+			</div>
+		);
+
+		if (this.props.video.tests.length <= 0) {
+			testList = [];
+		}
+
 		return (
 			<div className="VideoPreview">
 				<DebugTitle title="VideoPreview" />
 				<div className="info">
 					<div>
-						{/*<img src={this.props.video.thumbnailUrl} />*/}
-						<img />
+						<img src={this.props.video.thumbnailUrl} />
 						<div className="description">
 							<h1 onClick={loadVideo}>{this.props.video.name}</h1>
 							<p>{this.props.video.description}</p>
@@ -316,10 +324,7 @@ class VideoPreview extends React.Component {
 					</div>
 					<BountyDisplay value={this.props.video.bounty} symbol="BT" />
 				</div>
-				<div className="tests">
-					<h2> Bonus Challenges</h2>
-					{tests}
-				</div>
+				{testList}
 			</div>
 		);
 	}
@@ -328,14 +333,22 @@ class VideoPreview extends React.Component {
 class VideoContent extends React.Component {
 	render() {
 		const tests = this.props.video.tests.map(t => (<TestPreview test={t} f={this.props.f} />));
+		var testList = (
+			<div className="tests">
+				<h2>Bonus Challenges</h2>
+				{tests}
+			</div>
+		);
+
+		if (this.props.video.tests.length <= 0) {
+			testList = [];
+		}
+
 		return (
 			<div className="VideoContent">
 				<Summary name={this.props.video.name} description={this.props.video.description} bounty={this.props.video.bounty} />
 				<Video video={this.props.video} f={this.props.f}/>
-				<div className="tests">
-					<h2> Bonus Challenges</h2>
-					{tests}
-				</div>
+				{testList}
 			</div>
 		);
 	}

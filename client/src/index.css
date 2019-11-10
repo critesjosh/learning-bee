@@ -92,27 +92,28 @@ code {
 }
 
 .CoursePreview {
+	padding: 10px;
 	margin: 10px;
 	border-radius: 4px;
 	background-color: var(--bright-color);
+	margin: 10px;
 	display: flex;
-	height: 150px;
+	justify-content: space-between;
 }
 
-.CoursePreview .img {
-	margin: auto;
-	width: 100px;
-	color: var(--accent-color);
-}
-
-.CoursePreview .img img {
-	width: 100px;
+.CoursePreview img {
+	width: 168px;
+	float: left;
+	align-items: flex-start;
 }
 
 .CoursePreview .desc {
-	margin: auto;
-	text-align: left;
+	width: 100%;
+	float: left;
 	color: var(--dark-color);
+	font-size: 15px;
+	text-align: left;
+	margin-left: 20px;
 }
 
 .CoursePreview .desc .title h1 {
@@ -121,12 +122,6 @@ code {
 
 .CoursePreview .desc .title:hover {
 	text-decoration: underline;
-}
-
-.CoursePreview .bounty {
-	margin: auto;
-	width: 100px;
-	color: var(--accent-color);
 }
 
 .CourseContent {
