@@ -1,2 +1,8 @@
 INSERT INTO videos (id, name_, description_, thumbnail_url, youtube_id, length, category_id, bounty, course_id) 
 VALUES (1, 'Halves and fourths', 'Learn how to divide shapes into two or four equal sections.', 'https://i.ytimg.com/vi/0lSTXtwPuOU/hqdefault.jpg?sqp=-oaymwEXCPYBEIoBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDQKkzZVeYGoYNT5ApZBBIfz89apA', '0lSTXtwPuOU', 144, 1, 10, 1);
+INSERT INTO videos (id, name_, description_, thumbnail_url, youtube_id, length, category_id, bounty, course_id) 
+VALUES (2, 'First living things on land clarification', 'Learn how to divide shapes into two or four equal sections.', 'https://i.ytimg.com/vi/3gUE_P9T-Wk/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLCc2KcSJfCYoSKano0GR-kNzaNEUw', '3gUE_P9T-Wk', 334, 2, 15, 2);
+INSERT INTO videos (id, name_, description_, thumbnail_url, youtube_id, length, category_id, bounty, course_id) 
+VALUES (3, 'Carbon 14 dating 2', 'The Earth is huge, but it is tiny compared to the Sun (which is super huge).', 'https://i.ytimg.com/vi/4YUtnod-YuE/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLABjMs_OaqmrXnp0_5MzsxT-YZTdg', '4YUtnod-YuE', 254, 2, 15, 2);
+INSERT INTO videos (id, name_, description_, thumbnail_url, youtube_id, length, category_id, bounty, course_id) 
+VALUES (4, 'Recognizing shapes', 'Learn how to identify circles, triangles, squares, rectangles, rhombuses, and trapezoids.', 'https://i.ytimg.com/vi/10dTx1Zy_4w/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLA_Nh7T5rXrBGRN6G3P2GrLqV7g9A', '10dTx1Zy_4w', 368, 1, 30, 1);
