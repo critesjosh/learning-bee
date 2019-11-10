@@ -6,6 +6,7 @@ import BurnerCore from "@burner-wallet/core"
 import { InjectedSigner, LocalSigner } from "@burner-wallet/core/signers"
 import { InfuraGateway } from "@burner-wallet/core/gateways"
 import Web3 from "web3";
+import { withToastManager } from 'react-toast-notifications';
 
 import "./App.css";
 
@@ -83,7 +84,7 @@ class App extends Component {
       this.setState({
         //web3, accounts, contract: instance,
         burnerCore: core });
-      
+
       //fortmatic: new Fortmatic('pk_live_B7C428D5A6478799');
 
     } catch (error) {
