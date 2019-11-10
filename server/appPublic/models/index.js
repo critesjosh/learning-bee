@@ -12,6 +12,9 @@ class Models {
             host: process.lb_server_env.database.host,
             port: process.lb_server_env.database.port,
             operatorsAliases: false,
+            define: {
+                timestamps: false  // I don't want timestamp fields by default
+            },
             pool: {
                 max: 5,
                 min: 0,

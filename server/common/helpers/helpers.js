@@ -73,7 +73,7 @@ class Helpers {
      * Deep copy a javascript object
      *
      * @author: Arsham Eslami (arshameslami@gmail.com)
-     * @copyright 2018 Caliber Communications
+     * @copyright 2019 Learning Bee
      *
      * @param {Mixed} obj
      * 	Object to clone.

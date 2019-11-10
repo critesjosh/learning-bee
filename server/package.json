@@ -4,6 +4,7 @@
   "description": "Serves required data for learning bee client apps.",
   "main": "api.js",
   "scripts": {
+    "start": "node api.js",
     "dev": "nodemon --inspect api.js",
     "docs": "spectacle --target-dir ./appPublic/docs swagger.yaml"
   },

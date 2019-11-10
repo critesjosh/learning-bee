@@ -2,4 +2,4 @@ node_modules/
 /nbproject/private/
 .idea
 
-config.json
+config.js

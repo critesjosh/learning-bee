@@ -14,51 +14,102 @@ class Definitions {
         this.helpers = helpers;
         this.sequelize = sequelize;
 
-        this.User = this.sequelize.define('users', {
+        this.Category = this.sequelize.define('categorys', {
             id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
-            name: {type: Sequelize.JSON, allowNull: false},
-            email: {type: Sequelize.STRING, allowNull: false},
-            password_: {type: Sequelize.STRING, allowNull: false},
-			details: Sequelize.JSON
+            name_: {type: Sequelize.STRING, allowNull: false}
         }, {});
 
-		this.Party = this.sequelize.define('parties', {
-            id: {type: Sequelize.INTEGER, primaryKey: true},
-            name: {type: Sequelize.STRING, allowNull: false},
-            host_id: {type: Sequelize.INTEGER, allowNull: false},
-            public_: {type: Sequelize.BOOLEAN, allowNull: false},
-            active: {type: Sequelize.BOOLEAN, allowNull: false},
-            details: Sequelize.JSON,
+        this.Course = this.sequelize.define('courses', {
+            id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+            name_: {type: Sequelize.STRING, allowNull: false},
+            description_: {type: Sequelize.STRING, allowNull: false},
+            thumbnail_url: {type: Sequelize.STRING, allowNull: false},
+            bonus_bounty: {type: Sequelize.INTEGER, allowNull: false},
+            total_bounty: {type: Sequelize.INTEGER, allowNull: false},
+            category_id: {type: Sequelize.INTEGER, allowNull: false}
         }, {});
-		
-		this.PartySong = this.sequelize.define('party_songs', {
-            id: {type: Sequelize.INTEGER, primaryKey: true},
-            party_id: {type: Sequelize.INTEGER, allowNull: false},
-            source_id: {type: Sequelize.INTEGER, allowNull: false},
-            order_: {type: Sequelize.INTEGER, allowNull: false},
-            details: Sequelize.JSON,
+
+        this.Course.belongsTo(this.Category, {foreignKey: 'category_id'});
+
+        this.Video = this.sequelize.define('videos', {
+            id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+            name_: {type: Sequelize.STRING, allowNull: false},
+            description_: {type: Sequelize.STRING, allowNull: false},
+            thumbnail_url: {type: Sequelize.STRING, allowNull: false},
+            youtube_id: {type: Sequelize.STRING, allowNull: false},
+            length: {type: Sequelize.INTEGER, allowNull: false},
+            bounty: {type: Sequelize.INTEGER, allowNull: false},
+            course_id: {type: Sequelize.INTEGER, allowNull: false},
+        })
+
+        this.Video.belongsTo(this.Course, {foreignKey: 'course_id'});
+        this.Video.belongsTo(this.Category, {foreignKey: 'category_id'});
+        
+        this.Test = this.sequelize.define('tests', {
+            id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+            name_: {type: Sequelize.STRING, allowNull: false},
+            bounty: {type: Sequelize.INTEGER, allowNull: false},
+            video_id: {type: Sequelize.INTEGER, allowNull: false},
+        })
+
+        this.Test.belongsTo(this.Video, {foreignKey: 'video_id'});
+
+        this.Question = this.sequelize.define('questions', {
+            id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+            name_: {type: Sequelize.STRING, allowNull: false},
+            text: {type: Sequelize.STRING, allowNull: false},
+            test_id: {type: Sequelize.INTEGER, allowNull: false},
+        })
+
+        this.Question.belongsTo(this.Test, {foreignKey: 'test_id'});
+
+        this.Response = this.sequelize.define('responses', {
+            id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+            text: {type: Sequelize.STRING, allowNull: false},
+            correct: {type: Sequelize.BOOLEAN, allowNull: false},
+            question_id: {type: Sequelize.INTEGER, allowNull: false},
+        })
+
+        this.Response.belongsTo(this.Question, {foreignKey: 'question_id'});
+
+        this.User = this.sequelize.define('users', {
+            id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+            torus_address: {type: Sequelize.STRING, allowNull: false}
         }, {});
-		
-		this.PartyGuest = this.sequelize.define('party_guests', {
-            id: {type: Sequelize.INTEGER, primaryKey: true},
-            party_id: {type: Sequelize.INTEGER, allowNull: false},
-            type_: {type: Sequelize.INTEGER, allowNull: false},
-            token: Sequelize.STRING
+
+        this.UserVideoEvent = this.sequelize.define('user_video_events', {
+            id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+            user_id: {type: Sequelize.INTEGER, allowNull: false},
+            video_id: {type: Sequelize.INTEGER, allowNull: false},
+            event_type: {type: Sequelize.STRING, allowNull: false},
+        }, {
+            timestamps: true,  // I do want timestamps here
+        });
+
+        this.UserVideoEvent.belongsTo(this.User, {foreignKey: 'user_id'});
+        this.UserVideoEvent.belongsTo(this.Video, {foreignKey: 'video_id'});
+
+        this.UserTestEvent = this.sequelize.define('user_test_events', {
+            id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+            user_id: {type: Sequelize.INTEGER, allowNull: false},
+            test_id: {type: Sequelize.INTEGER, allowNull: false},
+            passed: {type: Sequelize.BOOLEAN, allowNull: false},
+        }, {
+            timestamps: true,  // I do want timestamps here
+        });
+
+        this.UserTestEvent.belongsTo(this.User, {foreignKey: 'user_id'});
+        this.UserTestEvent.belongsTo(this.Test, {foreignKey: 'test_id'});
+
+        this.UserTestEventResponse = this.sequelize.define('user_test_event_responses', {
+            id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+            user_test_event_id: {type: Sequelize.INTEGER, allowNull: false},
+            response_id: {type: Sequelize.INTEGER, allowNull: false},
         }, {});
-		
-		this.PartyGuestUser = this.sequelize.define('party_guest_users', {
-            id: {type: Sequelize.INTEGER, primaryKey: true},
-            guest_id: {type: Sequelize.INTEGER, allowNull: false},
-            user_id: {type: Sequelize.INTEGER, allowNull: false}
-        }, {});
-		
-		// Party foreignKeys
-		this.Party.belongsTo(this.User, {foreignKey: 'user_id'});
-		this.PartySong.belongsTo(this.Party, {foreignKey: 'party_id'});
-		this.PartyGuest.belongsTo(this.Party, {foreignKey: 'party_id'});
-		this.PartyGuestUser.belongsTo(this.PartyGuest, {foreignKey: 'guest_id'});
-		this.PartyGuestUser.belongsTo(this.User, {foreignKey: 'user_id'});
-		
+
+        this.UserTestEventResponse.belongsTo(this.UserTestEvent, {foreignKey: 'user_test_event_id'});
+        this.UserTestEventResponse.belongsTo(this.Response, {foreignKey: 'response_id'});
+
     }
 }
 module.exports = Definitions;

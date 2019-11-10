@@ -84,7 +84,7 @@ class Logger {
      * We also convert the message to a string
      *
      * @author: Arsham Eslami (arshameslami@gmail.com)
-     * @copyright 2018 Caliber Communications
+     * @copyright 2019 Learning Bee
      *
      * @param {String} fileName
      *   Name of file to write to.
@@ -111,7 +111,7 @@ class Logger {
      * Takes a standard date format and converts it to a date stamp (YYYY-MM-DD) and a time stamp (HH:mm:ss).
      *
      * @author: Arsham Eslami (arshameslami@gmail.com)
-     * @copyright 2018 Caliber Communications
+     * @copyright 2019 Learning Bee
      *
      * @param {Date} date
      *   Date object to convert
@@ -205,7 +205,7 @@ class Logger {
      * Find all log files that are older than 30 days and delete them
      *
      * @author: Arsham Eslami (arshameslami@gmail.com)
-     * @copyright 2018 Caliber Communications
+     * @copyright 2019 Learning Bee
      *
      * @return {void}
      */
